@@ -1,14 +1,14 @@
 trigger:
 - master
 
+pool:
+  vmImage: 'WindowsPool'
+
 variables:
   solution: '**/*.csproj'
   runtime: 'win-x64'
   configuration: 'Release'
   
-pool:
-  vmImage: 'WindowsPool'
-
 steps:
 - task: replacetokens@5
   inputs:
