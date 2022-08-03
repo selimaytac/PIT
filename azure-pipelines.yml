@@ -18,7 +18,6 @@ steps:
     keepToken: false
     tokenPrefix: '#{'
     tokenSuffix: '}#'
-    escapeChar: '\'
     actionOnNoFiles: 'fail'
   
 - task: UseDotNet@2
