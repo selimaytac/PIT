@@ -7,6 +7,7 @@ namespace DTPersonalInfoTracker.DbContexts;
 public class PITDbContext : DbContext
 {
     public DbSet<PersonelModel> Personels { get; set; }
+    public DbSet<LogModel> Logs { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -16,5 +17,7 @@ public class PITDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<PersonelModel>().HasKey(p => p.RecordId);
+        modelBuilder.Entity<LogModel>().HasKey(p => p.Id);
+        modelBuilder.Entity<LogModel>().Property(p => p.Id).ValueGeneratedOnAdd();
     }
 }

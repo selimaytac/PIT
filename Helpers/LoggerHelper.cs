@@ -1,4 +1,6 @@
-﻿using Serilog;
+﻿using DTPersonalInfoTracker.DbContexts;
+using DTPersonalInfoTracker.Models;
+using Serilog;
 using Serilog.Core;
 
 namespace DTPersonalInfoTracker.Helpers;
@@ -32,5 +34,11 @@ public class LoggerHelper
     public static void Information(string message)
     {
         DTLogger.Information(message);
+    }
+
+    public static void LogToDb(PITDbContext context, LogModel log)
+    {
+        context.Logs.Add(log);
+        context.SaveChanges();
     }
 }

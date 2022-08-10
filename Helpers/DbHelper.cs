@@ -45,6 +45,7 @@ public class DbHelper
         context.Personels.AddRange(personelModels);
         context.SaveChanges();
         LoggerHelper.Information("Personel list successfully added to database.");
+        LoggerHelper.LogToDb(context, new LogModel {Date = DateTime.Now, OperationName = "Update", Message = "Personel list successfully added to database"});
     }
 
     public static void InitializeDb(PITDbContext context)
@@ -60,5 +61,6 @@ public class DbHelper
     {
         context.Personels.RemoveRange(context.Personels);
         LoggerHelper.Information("Personel table truncated.");
+        LoggerHelper.LogToDb(context, new LogModel {Date = DateTime.Now, OperationName = "Truncate", Message = "Personel table truncated."});
     }
 }
